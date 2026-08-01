@@ -1,11 +1,9 @@
 [build]
-builder = "NIXPACKS"
+builder = "RAILPACK"
 
 [deploy]
-# Serve Laravel na porta que o Railway injeta via $PORT
-startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
-# Aplica migrations em TODA subida (idempotente — artisan migrate --force)
-preDeployCommand = "php artisan migrate --force"
+# Start gerado pelo Railpack (start-container.sh): roda `php artisan migrate --force`
+# no boot + inicia o FrankenPHP com document root /public — NÃO sobrescrever com startCommand.
 # Healthcheck: rota /up registrada no bootstrap/app.php
 healthcheckPath = "/up"
 healthcheckTimeout = 30
