@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', env('DB_URL') ? 'mysql' : 'sqlite'),
+    'default' => env('DB_URL') ? 'mysql' : env('DB_CONNECTION', 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
