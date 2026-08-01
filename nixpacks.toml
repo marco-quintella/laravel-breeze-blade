@@ -1,3 +1,0 @@
-[phases.prepare]
-dependsOn = ["build"]
-cmds = ["php artisan migrate --force"]

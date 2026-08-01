@@ -1,0 +1,16 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+# Serve Laravel na porta que o Railway injeta via $PORT
+startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
+# Aplica migrations em TODA subida (idempotente — artisan migrate --force)
+preDeployCommand = "php artisan migrate --force"
+# Healthcheck: rota /up registrada no bootstrap/app.php
+healthcheckPath = "/up"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+# Nota: variáveis de template (prompts do wizard) são configuradas na UI do
+# Railway ao criar/publicar o template (Dashboard → Templates), NÃO aqui.

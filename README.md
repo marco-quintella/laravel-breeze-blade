@@ -1,3 +1,13 @@
+---
+title: Laravel Breeze Blade MySQL
+description: Laravel 13 with Breeze (Blade) authentication connected to a Railway MySQL database.
+tags:
+  - php
+  - laravel + blade
+  - auth
+  - mysql
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -11,10 +21,29 @@
 
 ## About this template
 
-- PHP
-- Laravel 11 Breeze with Blade Template Engine
+- PHP 8.3+
+- Laravel 13
+- Breeze authentication with the Blade template engine (register / login / profile)
 - MySQL
-- Initial migration pre-configured, remember to remove it from nixpacks config in production
+
+## 📝 Notes
+
+- **Env**: Envs are standard except `DB_URL` that is configured in Railway, not in the env file.
+- **Database**: Laravel auto-selects MySQL when `DB_URL` is set (falls back to SQLite for local dev without a `.env`).
+- **Migrations**: Run automatically on every deploy via `preDeployCommand` in `railway.toml` (idempotent).
+- **Web server**: `php artisan serve` bound to `0.0.0.0:$PORT`.
+- **Healthcheck**: `/up` route (registered in `bootstrap/app.php`).
+- **Logging**: Logs are sent to stdout and can be accessed via `railway logs`.
+
+## 🚀 Local Development
+
+```bash
+cp .env.example .env
+composer install
+npm install
+npm run build
+php artisan serve
+```
 
 ## About Laravel
 
@@ -38,38 +67,3 @@ You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
