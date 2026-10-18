@@ -16,4 +16,12 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_forwarded_https_is_used_for_generated_urls(): void
+    {
+        $this->withHeader('X-Forwarded-Proto', 'https')->get('/');
+
+        $this->assertTrue(request()->isSecure());
+        $this->assertStringStartsWith('https://', url('/'));
+    }
 }
